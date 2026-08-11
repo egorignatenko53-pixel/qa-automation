@@ -31,4 +31,29 @@ public class ApiTest {
                 .statusCode(201)
                 .body("title", equalTo("Мой пост"));
     }
+
+    @Test
+    public void testUpdatePost() {
+        String requestBody = "{ \"title\": \"Обновлённый пост\", \"body\": \"Новый текст\", \"userId\": 1 }";
+
+        RestAssured
+                .given()
+                .header("Content-Type", "application/json")
+                .body(requestBody)
+                .when()
+                .put("https://jsonplaceholder.typicode.com/posts/1")
+                .then()
+                .statusCode(200)
+                .body("title", equalTo("Обновлённый пост"));
+    }
+
+    @Test
+    public void testDeletePost() {
+        RestAssured
+                .given()
+                .when()
+                .delete("https://jsonplaceholder.typicode.com/posts/1")
+                .then()
+                .statusCode(200);
+    }
 }
