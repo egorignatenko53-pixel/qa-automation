@@ -25,4 +25,11 @@ public class BankAccountTest {
     public void testWithdrawToMuch(){
         assertThrows(IllegalArgumentException.class,()-> account.withdraw(200));
     }
+
+    @Test
+    public void testMultiOperations(){
+        account.deposit(50);
+        account.withdraw(20);
+        assertEquals(130,account.getBalance());
+    }
 }
