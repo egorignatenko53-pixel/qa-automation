@@ -51,8 +51,9 @@ public class CheckAPITest {
         String requestBody = "{ \"title\": \"Мой пост\"}";
         RestAssured
                 .given()
+                .header("Content-Type", "application/json")
                 .when()
-                .get("https://jsonplaceholder.typicode.com/posts/1")
+                .patch("https://jsonplaceholder.typicode.com/posts/1")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -72,7 +73,7 @@ public class CheckAPITest {
         RestAssured
                 .given()
                 .when()
-                .get("https://jsonplaceholder.typicode.com/posts/1")
+                .get("https://jsonplaceholder.typicode.com/posts/1/co,,ents")
                 .then()
                 .log().all()
                 .statusCode(200);
