@@ -21,6 +21,9 @@
 - Проверки (assertions): `assertEquals`, `assertTrue`, `assertFalse`
 - Принцип «ожидаемое vs фактическое» значение
 
+### API-тесты
+- REST Assured: GET-запросы, проверка статус-кода и полей JSON
+
 ## Как запустить тесты
 
 Открыть проект в IntelliJ IDEA и запустить класс `CalculatorTest`
