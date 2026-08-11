@@ -16,4 +16,19 @@ public class ApiTest {
                 .body("id", equalTo(1))
                 .body("userId", equalTo(1));
     }
+
+    @Test
+    public void testCreatePost() {
+        String requestBody = "{ \"title\": \"Мой пост\", \"body\": \"Текст поста\", \"userId\": 1 }";
+
+        RestAssured
+                .given()
+                .header("Content-Type", "application/json")
+                .body(requestBody)
+                .when()
+                .post("https://jsonplaceholder.typicode.com/posts")
+                .then()
+                .statusCode(201)
+                .body("title", equalTo("Мой пост"));
+    }
 }
